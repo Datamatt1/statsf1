@@ -5,6 +5,8 @@ from streamlit_option_menu import option_menu
 
 from pilotes import afficher_pilotes
 from circuits import afficher_circuits
+from saisons import afficher_saisons
+
 
 from donnees import charger_donnees
 f1seasons_drivers, f1db_races_race_results, circuits_complets = charger_donnees()
@@ -17,7 +19,7 @@ st.sidebar.title("Menu")
 with st.sidebar:
  selected_page = option_menu(
     menu_title="Sections", # Titre du menu (ou None)
-    options=["Accueil", "Pilotes", "Circuits"],
+    options=["Accueil", "Pilotes", "Circuits", "Saisons"],
     icons=["house", "person", "flag-fill"],
     default_index=0
  )
@@ -41,3 +43,6 @@ elif selected_page=="Pilotes":
 
 elif selected_page=="Circuits":  
     afficher_circuits(circuits_complets)
+
+elif selected_page=="Saisons":
+   afficher_saisons(f1db_races_race_results)
